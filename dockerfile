@@ -10,7 +10,11 @@ RUN corepack enable && yarn install --frozen-lockfile
 
 COPY . .
 
-RUN yarn workspace be build
+WORKDIR /app/be
+
+RUN yarn install --frozen-lockfile
+
+RUN yarn build
 
 FROM node:20-alpine AS runner
 
@@ -24,6 +28,6 @@ COPY be/package.json ./be/package.json
 
 RUN corepack enable && yarn install --frozen-lockfile --production
 
-COPY --from=builder /app/be/dist ./dist
+COPY --from=builder /app/be/dist/ ./dist/
 
 CMD ["node", "dist/main.js"]
