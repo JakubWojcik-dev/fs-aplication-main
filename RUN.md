@@ -40,14 +40,19 @@ cp .env.example .env
 ```bash
 yarn prod:be
 ```
+3. install dependencies
 
-3. run fe locally
+```bash
+yarn install
+```
+
+4. run fe locally
 
 ```bash
 yarn dev:fe
 ```
 
-4. run be locally(make sure that database is still working inside docker)
+5. run be locally(make sure that database is still working inside docker)
 
 ```bash
 yarn dev:be
