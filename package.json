@@ -1,0 +1,22 @@
+{
+  "name": "fs-test-task",
+  "version": "1.0.0",
+  "description": "Full Stack Test Task",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "dev:fe": "cd fe &&  yarn dev",
+    "dev:be": "cd be/src &&  ts-node main.ts",
+    "build": "tsc",
+    "prod:be": "docker compose up --build"
+  },
+  "author": "Illia S",
+  "license": "ISC",
+  "workspaces": [
+    "fe",
+    "be"
+  ],
+  "dependencies": {
+    "express-validator": "^7.3.2"
+  }
+}

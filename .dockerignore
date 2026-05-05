@@ -1,0 +1,7 @@
+node_modules 
+.git
+Dockerfile
+dist
+fe
+.env
+.env.example

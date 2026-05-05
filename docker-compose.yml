@@ -1,0 +1,26 @@
+version: "3"
+# your services for the task
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - ${APP_PORT}
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URI: mongodb://${DATABASE_NAME}:${LOCAL_DB_PORT}/products
+      PORT: ${PORT}
+    env_file:
+      - .env
+  mongo:
+    image: ${DATABASE_NAME}:6
+    container_name: ${DATABASE_NAME}
+    ports:
+      - ${DATABASE_PORT}
+    volumes:
+      - mongo_data:/data/db
+      - ./be/src/config:/docker-entrypoint-initdb.d
+volumes:
+  mongo_data:
